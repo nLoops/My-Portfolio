@@ -49,53 +49,90 @@ class _WebHomeWidget extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Positioned(
-            child: Image.asset(Assets.heroImage),
+            child: const _AnimatedHeroImage(),
             right: _width * 0.15,
           ),
           Positioned(
-            child: Container(
-                width: _width * 0.5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Ahmed is a mobile developer who loves to build robust apps and services.',
-                      style: GoogleFonts.archivo(
-                          fontSize: 40.0, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Container(
-                      height: 2.0,
-                      width: 100.0,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(1.0)),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Text(
-                      'I do freelance projects for both platforms Android & IOS.',
-                      style: GoogleFonts.nunito(
-                          fontSize: 19, color: const Color(0xFF868686)),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Row(
-                      children: [
-                        for (var m in socialMediaData) CircleIconWidget(data: m)
-                      ],
-                    )
-                  ],
-                )),
+            child: _AnimatedHeroDetails(
+              width: (_width * 0.5),
+            ),
             right: _width * 0.30,
             bottom: _width * 0.10,
           ),
         ],
       ),
     );
+  }
+}
+
+class _AnimatedHeroImage extends StatelessWidget {
+  const _AnimatedHeroImage({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder(
+        tween: Tween<double>(begin: 200, end: 0),
+        duration: const Duration(milliseconds: 500),
+        builder: (_, value, __) {
+          return Transform.translate(
+            offset: Offset(value, 0),
+            child: Image.asset(Assets.heroImage),
+          );
+        });
+  }
+}
+
+class _AnimatedHeroDetails extends StatelessWidget {
+  final double width;
+
+  const _AnimatedHeroDetails({Key key, @required this.width}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder(
+        tween: Tween<double>(begin: -100, end: 0),
+        duration: const Duration(milliseconds: 500),
+        builder: (_, value, __) {
+          return Transform.translate(
+            offset: Offset(value, 0),
+            child: Container(
+              width: width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Ahmed is a mobile developer who loves to build robust apps and services.',
+                    style: GoogleFonts.archivo(
+                        fontSize: 40.0, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Container(
+                    height: 2.0,
+                    width: 100.0,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(1.0)),
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Text(
+                    'I do freelance projects for both platforms Android & IOS.',
+                    style: GoogleFonts.nunito(
+                        fontSize: 19, color: const Color(0xFF868686)),
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Row(
+                    children: [
+                      for (var m in socialMediaData) CircleIconWidget(data: m)
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
