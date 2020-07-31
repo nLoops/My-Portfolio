@@ -9,9 +9,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _margin = MediaQuery.of(context).size.width * 0.10;
+
     return Container(
       height: kToolbarHeight,
-      margin: const EdgeInsets.symmetric(horizontal: 0.0),
+      margin: EdgeInsets.symmetric(horizontal: _margin),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -26,17 +28,23 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             'HOME',
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          SizedBox(width: Dimens.webHomeAppBarSmallMargin,),
+          SizedBox(
+            width: Dimens.webHomeAppBarSmallMargin,
+          ),
           Text(
             'ABOUT',
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          SizedBox(width: Dimens.webHomeAppBarSmallMargin,),
+          SizedBox(
+            width: Dimens.webHomeAppBarSmallMargin,
+          ),
           Text(
             'PROJECTS',
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          SizedBox(width: Dimens.webHomeAppBarSmallMargin,)
+          SizedBox(
+            width: Dimens.webHomeAppBarSmallMargin,
+          )
         ],
       ),
     );
