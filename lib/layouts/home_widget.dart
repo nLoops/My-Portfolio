@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/res/app_themes.dart';
 import 'package:flutter_portfolio/res/assets.dart';
 import 'package:flutter_portfolio/res/const_data.dart';
+import 'package:flutter_portfolio/res/constants.dart';
 import 'package:flutter_portfolio/res/dimens.dart';
 import 'package:flutter_portfolio/widgets/circle_icon_widget.dart';
 import 'package:flutter_portfolio/widgets/home_app_bar.dart';
@@ -21,7 +23,7 @@ class HomeWidget extends StatelessWidget {
       }
 
       if (size.size == LayoutSize.mobile) {
-        return Container();
+        return _MainMobileWidget();
       }
 
       return Container();
@@ -145,6 +147,156 @@ class _AnimatedHeroDetails extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _MainMobileWidget extends StatefulWidget {
+  @override
+  __MainMobileWidgetState createState() => __MainMobileWidgetState();
+}
+
+class __MainMobileWidgetState extends State<_MainMobileWidget> {
+  int _currentIdx = 0;
+  PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: buildBottomNavigationBar(context),
+      body: Container(
+        padding: const EdgeInsets.symmetric(
+            horizontal: Dimens.dimenNormal, vertical: 8.0),
+        child: buildPageView(),
+      ),
+    );
+  }
+
+  PageView buildPageView() {
+    return PageView(
+      onPageChanged: (i) {
+        setState(() {
+          _currentIdx = i;
+        });
+      },
+      controller: _pageController,
+      children: [const _MobileHomeWidget(), const _MobileProjectWidget()],
+    );
+  }
+
+  BottomNavigationBar buildBottomNavigationBar(BuildContext context) {
+    return BottomNavigationBar(
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.white,
+        unselectedLabelStyle:
+            Theme.of(context).textTheme.subtitle2.apply(color: Colors.grey),
+        selectedLabelStyle: Theme.of(context).textTheme.subtitle2,
+        backgroundColor: AppTheme.primaryColor,
+        onTap: (idx) {
+          _pageController.animateToPage(idx,
+              duration: const Duration(milliseconds: 150),
+              curve: Curves.linear);
+        },
+        currentIndex: _currentIdx,
+        items: [
+          const BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              title: Text(
+                'HOME',
+              )),
+          const BottomNavigationBarItem(
+              icon: Icon(
+                Icons.phone_android,
+              ),
+              title: Text(
+                'PROJECTS',
+              ))
+        ]);
+  }
+}
+
+class _MobileHomeWidget extends StatelessWidget {
+  const _MobileHomeWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'AHMED IBRAHIM',
+          style: Theme.of(context).textTheme.headline4,
+        ),
+        SizedBox(
+          height: Dimens.dimenNormal,
+        ),
+        Image.asset(
+          Assets.avatar,
+          width: 200.0,
+          height: 200.0,
+        ),
+        SizedBox(
+          height: Dimens.dimenNormal,
+        ),
+        Text(
+          'Ahmed is a mobile developer who loves to build robust apps and services.',
+          style:
+              GoogleFonts.archivo(fontSize: 24.0, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(
+          height: Dimens.dimenNormal,
+        ),
+        Container(
+          height: 2.0,
+          width: 100.0,
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(1.0)),
+        ),
+        SizedBox(
+          height: Dimens.dimenNormal,
+        ),
+        Text(
+          'I do freelance projects for both platforms Android & IOS.',
+          style:
+              GoogleFonts.nunito(fontSize: 19, color: const Color(0xFF868686)),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(
+          height: 24.0,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: socialMediaIcons,
+        )
+      ],
+    );
+  }
+}
+
+class _MobileProjectWidget extends StatelessWidget {
+  const _MobileProjectWidget({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: projectsForMobile,
     );
   }
 }
