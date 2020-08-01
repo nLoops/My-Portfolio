@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/res/app_themes.dart';
 import 'package:flutter_portfolio/res/assets.dart';
 import 'package:flutter_portfolio/res/const_data.dart';
-import 'package:flutter_portfolio/res/constants.dart';
 import 'package:flutter_portfolio/res/dimens.dart';
-import 'package:flutter_portfolio/widgets/circle_icon_widget.dart';
 import 'package:flutter_portfolio/widgets/home_app_bar.dart';
-import 'package:flutter_portfolio/widgets/my_button_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_layout_builder/responsive_layout_builder.dart';
 
@@ -235,58 +232,61 @@ class _MobileHomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          'AHMED IBRAHIM',
-          style: Theme.of(context).textTheme.headline4,
-        ),
-        SizedBox(
-          height: Dimens.dimenNormal,
-        ),
-        Image.asset(
-          Assets.avatar,
-          width: 200.0,
-          height: 200.0,
-        ),
-        SizedBox(
-          height: Dimens.dimenNormal,
-        ),
-        Text(
-          'Ahmed is a mobile developer who loves to build robust apps and services.',
-          style:
-              GoogleFonts.archivo(fontSize: 24.0, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(
-          height: Dimens.dimenNormal,
-        ),
-        Container(
-          height: 2.0,
-          width: 100.0,
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(1.0)),
-        ),
-        SizedBox(
-          height: Dimens.dimenNormal,
-        ),
-        Text(
-          'I do freelance projects for both platforms Android & IOS.',
-          style:
-              GoogleFonts.nunito(fontSize: 19, color: const Color(0xFF868686)),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(
-          height: 24.0,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: socialMediaIcons,
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: kToolbarHeight,),
+          Text(
+            'AHMED IBRAHIM',
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          SizedBox(
+            height: Dimens.dimenNormal,
+          ),
+          Image.asset(
+            Assets.avatar,
+            width: 200.0,
+            height: 200.0,
+          ),
+          SizedBox(
+            height: Dimens.dimenNormal,
+          ),
+          Text(
+            'Ahmed is a mobile developer who loves to build robust apps and services.',
+            style: GoogleFonts.archivo(
+                fontSize: 24.0, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: Dimens.dimenNormal,
+          ),
+          Container(
+            height: 2.0,
+            width: 100.0,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(1.0)),
+          ),
+          SizedBox(
+            height: Dimens.dimenNormal,
+          ),
+          Text(
+            'I do freelance projects for both platforms Android & IOS.',
+            style: GoogleFonts.nunito(
+                fontSize: 19, color: const Color(0xFF868686)),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 24.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: socialMediaIcons,
+          ),
+          SizedBox(height: Dimens.dimenNormal,)
+        ],
+      ),
     );
   }
 }
