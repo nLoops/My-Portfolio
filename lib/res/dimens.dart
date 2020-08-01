@@ -7,5 +7,6 @@ class Dimens{
   static const double responsiveTabletWidth = 600;
   static const double responsiveMobileWidth = 360;
   static const double webViewPortSize = 768;
+  static const double dimenNormal = 16.0;
 
 }
