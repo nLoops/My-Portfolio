@@ -20,4 +20,7 @@ class Constants {
       'https://play.google.com/store/apps/details?id=co.eware.ayzen';
   static const String ayzenAppStore =
       'https://apps.apple.com/us/app/id1525453619';
+  static const String ntasksGooglePlay =
+      'https://play.google.com/store/apps/details?id=com.nloops.ntasks';
+  static const String typeEcommerce = 'AN E-COMMERCE PLATFORM';
 }

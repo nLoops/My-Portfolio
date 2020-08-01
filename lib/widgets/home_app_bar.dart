@@ -17,34 +17,34 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
             'Ahmed Ibrahim',
             style: Theme.of(context).textTheme.headline4,
           ),
-          Spacer(),
-          Text(
-            'HOME',
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-          SizedBox(
-            width: Dimens.webHomeAppBarSmallMargin,
-          ),
-          Text(
-            'ABOUT',
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-          SizedBox(
-            width: Dimens.webHomeAppBarSmallMargin,
-          ),
-          Text(
-            'PROJECTS',
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-          SizedBox(
-            width: Dimens.webHomeAppBarSmallMargin,
-          )
+//          Spacer(),
+//          Text(
+//            'HOME',
+//            style: Theme.of(context).textTheme.subtitle1,
+//          ),
+//          SizedBox(
+//            width: Dimens.webHomeAppBarSmallMargin,
+//          ),
+//          Text(
+//            'ABOUT',
+//            style: Theme.of(context).textTheme.subtitle1,
+//          ),
+//          SizedBox(
+//            width: Dimens.webHomeAppBarSmallMargin,
+//          ),
+//          Text(
+//            'PROJECTS',
+//            style: Theme.of(context).textTheme.subtitle1,
+//          ),
+//          SizedBox(
+//            width: Dimens.webHomeAppBarSmallMargin,
+//          )
         ],
       ),
     );
