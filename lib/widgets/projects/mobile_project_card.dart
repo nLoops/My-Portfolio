@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../my_button_widget.dart';
 
-class WebHomeProjectPreview extends StatelessWidget {
+class MobileProjectCard extends StatelessWidget {
   final String title;
   final String description;
   final String type;
@@ -12,36 +12,25 @@ class WebHomeProjectPreview extends StatelessWidget {
   final String appUrl;
   final String imgUrl;
 
-  const WebHomeProjectPreview(
+  const MobileProjectCard(
       {Key key,
-      this.title,
-      this.description,
-      this.type,
-      this.appUrl,
-      this.googleUrl,
-      this.imgUrl})
+        this.title,
+        this.description,
+        this.type,
+        this.appUrl,
+        this.googleUrl,
+        this.imgUrl})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(24.0),
       color: const Color(0xFF36393d),
-      height: Dimens.webViewPortSize,
-      child: Padding(
-        padding: const EdgeInsets.all(35.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [buildProjectDetails(context), Spacer(), buildImage()],
-        ),
-      ),
-    );
-  }
-
-  Expanded buildProjectDetails(BuildContext context) {
-    return Expanded(
-      flex: 3,
+      margin: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(Dimens.dimenNormal),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             title,
@@ -49,7 +38,11 @@ class WebHomeProjectPreview extends StatelessWidget {
                 fontSize: 24.0, fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            height: 150.0,
+            height: Dimens.dimenNormal,
+          ),
+          Image.asset(imgUrl, height: 300,),
+          SizedBox(
+            height: Dimens.dimenNormal,
           ),
           Text(
             'MOBILE APP DEVELOPER',
@@ -59,7 +52,7 @@ class WebHomeProjectPreview extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 24.0),
             child: Text(
               type,
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
           Flexible(
@@ -77,10 +70,9 @@ class WebHomeProjectPreview extends StatelessWidget {
     );
   }
 
-  Expanded buildImage() => Expanded(flex: 7, child: Image.asset(imgUrl));
-
   Row buildStoreButtons(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Visibility(
           visible: googleUrl != null,
